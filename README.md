@@ -17,7 +17,3 @@ and open
 ## License
 
 All code is licensed under the GPL-3.0 license
-
-### Credits
-
-- [Charalampos](https://github.com/cfanoulis) for suggesting the name
