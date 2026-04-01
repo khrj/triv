@@ -1,4 +1,4 @@
-# Kuizzy
+# Triv
 
 A Kahoot clone made using SweetAlert and WebSockets
 
@@ -7,13 +7,13 @@ A Kahoot clone made using SweetAlert and WebSockets
 Run
 
 ```bash
-yarn
+npm install
 ```
 
 and then
 
 ```bash
-yarn build && yarn start
+npm run build && npm start
 ```
 
 and open
