@@ -1,0 +1,26 @@
+services:
+    server:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: always
+        environment:
+            - MYSQL_URL=mysql://root:password@db:3306/triv
+        ports:
+            - "3000:3000"
+        depends_on:
+            - db
+
+    db:
+        image: mysql:8.0
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_DATABASE=triv
+        volumes:
+            - databaseData:/var/lib/mysql
+        ports:
+            - "8689:3306"
+
+volumes:
+    databaseData:
