@@ -7,20 +7,13 @@ A Kahoot clone made using SweetAlert and WebSockets
 Run
 
 ```bash
-npm install
-```
-
-and then
-
-```bash
-npm run build && npm start
+docker compose up --build
 ```
 
 and open
 
-- `localhost:3000/host` - To be the host
-- `localhost:3000` - To join the game as a player
-
+- `localhost:3000`
+ 
 ## License
 
 All code is licensed under the GPL-3.0 license
