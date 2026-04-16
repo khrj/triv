@@ -81,9 +81,7 @@ export async function initDB() {
                 )
             `);
             
-            // Roles Creation
             try {
-                // Must catch errors if running without broad root privs recursively
                 await connection.query("CREATE USER IF NOT EXISTS 'dba_user'@'%' IDENTIFIED BY 'dbapass';");
                 await connection.query("GRANT ALL PRIVILEGES ON triv.* TO 'dba_user'@'%';");
                 
@@ -95,7 +93,6 @@ export async function initDB() {
                 
                 await connection.query("FLUSH PRIVILEGES;");
 
-                // Seed Example Quiz
                 const [admins]: any = await connection.query("SELECT * FROM Users WHERE username = 'admin'");
                 if (admins.length === 0) {
                     await connection.query("INSERT INTO Users (username, email, password_hash) VALUES ('admin', 'admin@triv.local', 'password')");
@@ -126,7 +123,7 @@ export async function initDB() {
             }
 
             connection.release();
-            console.log("Connected to MySQL successfully and initialized ER schema mappings.");
+            console.log("Connected to MySQL");
             break;
         } catch (error: any) {
             console.log("DB Connection Failed, retrying in 5s...", error.message);

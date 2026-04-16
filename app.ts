@@ -207,12 +207,13 @@ io.on("connection", (socket: Socket) => {
     socket.on("ask_hint", async (questionText) => {
         try {
             const response = await ai.models.generateContent({
-                model: "gemini-2.5-flash",
+                model: "gemini-2.5-flash-lite",
                 contents: `Hint for: "${questionText}". Do not reveal the exact answer. One sentence.`
             });
             socket.emit("new_hint", response.text);
         } catch (e) {
-            socket.emit("new_hint", "AI API Error: Ensure GEMINI_API_KEY is injected.");
+            console.error(e)
+            socket.emit("new_hint", "Error with AI inference");
         }
     });
 
